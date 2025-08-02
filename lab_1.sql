@@ -138,4 +138,47 @@ SELECT CNAME FROM deposit WHERE BNAME=null;
 --18. Retrieve all unique branches using DISTINCT. (Use Branch Table)
 SELECT DISTINCT BNAME FROM branch;
 
---19. Retrieve first 50% record from borrow table.
+--19. Retrieve first 50% record from borrow table
+
+
+--20. Retrieve first five account number from deposit table.
+
+
+
+--Part => B
+
+--1. Display all the details of first five customers from deposit table.
+
+
+--2. Display all the details of first three depositors from deposit table whose amount is greater than 1000.
+
+	
+--3. Display Loan No, Customer Name of first five borrowers whose branch name does not belongs to �ANDHERI�
+--from borrow table
+
+	
+--4. Select all details with account numbers not in the range 105 to 109 in deposit table.
+select * from deposit where actno not between 105 and 109
+
+--5. Select all records from BORROW where the amount is greater than 1000 and less than or equal to 7000, and
+--the loan number is between 250 and 600
+
+select * from borrow where (amount > 1000 and amount <= 7000)  and (loanno between 250 and  600)
+
+--Part => C
+
+--1. Display all the detail of customer who deposited more than 5000 without using * from deposit table.	
+SELECT ACTNO,CNAME,BNAME,AMOUNT,ADATE FROM deposit WHERE AMOUNT>5000;
+
+--2. Retrieve all unique customer names with city. (Use Customer table)
+SELECT DISTINCT CNAME,CITY FROM customers;
+
+--3. Retrieve records from the BORROW table where the loan amount is greater than 3000 and the loan number is not a multiple of 3.
+SELECT * FROM borrow WHERE AMOUNT>5000 AND (loanno%3!=0);
+
+--4. Retrieve records from the DEPOSIT table where amount is greater than 2000 also account number is between 100 and 110 and date is after '1-MAR-1995' or before '27-MAR-1996'.
+SELECT * FROM deposit WHERE (AMOUNT>2000) AND (ACTNO BETWEEN 100 AND 110) AND (ADATE>'1995-3-1' OR ADATE<'1996-3-27');
+
+--5. Retrieve all odd/even value loan number from Borrow table
+select * from borrow where loanno % 2 != 0
+select * from borrow where loanno % 2 = 0
