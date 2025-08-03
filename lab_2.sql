@@ -46,10 +46,57 @@ UPDATE deposit SET AMOUNT=(AMOUNT+(AMOUNT*20/100))
 --3. Increase AMOUNT by 1000 in all the account. (Use Deposit Table)
 UPDATE deposit SET AMOUNT=(AMOUNT+1000) 
 
---4. UPDATE the BORROW table to SET the AMOUNT to 7000 and the branch name to 'CENTRAL' WHERE the customer
---name is �MEHUL� and the loan number is even.
+--4. UPDATE the BORROW table to SET the AMOUNT to 7000 and the branch name to 'CENTRAL' WHERE the customer name is MEHUL and the loan number is even.
 UPDATE borrow SET AMOUNT=7000 , BNAME='central' WHERE CNAME='mehul' and (loanno%2 = 0)
 
---5. UPDATE the DEPOSIT table to SET the date to '2022-05-15' and the AMOUNT to 2500 for all accounts in �VRCE�
---and with an account number less than 105.
+--5. UPDATE the DEPOSIT table to SET the date to '2022-05-15' and the AMOUNT to 2500 for all accounts in VRCE and with an account number less than 105.
 UPDATE deposit SET adate='2022-05-15' , AMOUNT=2500.00 WHERE ACTNO < 105 and BNAME='vrce'
+
+--Part => C
+
+--1. Update amount of loan no 321 to NULL. (Use Borrow Table)
+update borrow set amount=null where loanno=321;
+
+--2. Update branch name of KRANTI to NULL (Use Borrow Table)
+update borrow set bname=null where cname='kranti' 
+
+--3. Display the name of borrowers whose Loan number is NULL. (Use Borrow Table)
+select * from borrow where loanno is null
+
+--4. Display the Borrowers whose having branch. (Use Borrow Table)
+select * from borrow where bname is not null
+
+--5. Update the Loan Amount to 5000, Branch to VRCE & Customer Name to Darshan whose loan no is 481. (Use Borrow Table)
+update borrow set amount=5000.00 , bname='vrce' , cname='darshan' where loanno=481
+
+--6. Update the Deposit table and set the date to 01-01-2021 for all the depositor whose amount is less than 2000.
+update deposit set adate='2021-01-01' where amount < 2000
+
+--7. Update the Deposit table and set the date to NULL & Branch name to ANDHERI whose Account No is 110.
+update deposit set adate=null , bname='andheri'where actno=110 
+
+
+--Alter, Rename Operation
+
+--Part => A
+--1. Add two more columns City VARCHAR (20) and Pincode INT
+alter table deposit add city varchar(20) , pincode int;
+
+--2. Add column state VARCHAR(20).
+alter table deposit add state varchar(20);
+
+--3. Change the size of CNAME column from VARCHAR (50) to VARCHAR (35).
+alter table deposit alter column cname varchar(35);
+
+--4. Change the data type DECIMAL to INT in amount Column.
+alter table deposit alter column amount int;
+
+--5. Delete Column City from the DEPOSIT table.
+alter table deposit drop column city;
+
+--6. Rename Column ActNo to ANO.
+ALTER TABLE deposit RENAME COLUMN ACTNO TO ANO;
+
+--7. Change name of table DEPOSIT to DEPOSIT_DETAIL
+RENAME TABLE DEPOSIT TO DEPOSIT_DETAIL;
+
