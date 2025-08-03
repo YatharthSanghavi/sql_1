@@ -1,55 +1,55 @@
 --LAB => 2
---Perform SQL queries for Update, Alter, Rename, Delete, Truncate, Drop
+--Perform SQL queries for UPDATE, Alter, Rename, Delete, Truncate, Drop
 
 
 --Part - A
 
---1. Update deposit amount of all customers from 3000 to 5000. (Use Deposit Table)
+--1. UPDATE deposit amount of all customers from 3000 to 5000. (Use Deposit Table)
 
-update deposit set amount=5000.00 where amount = 3000.00
+UPDATE deposit SET amount=5000.00 WHERE amount = 3000.00
 
 --2. Change branch name of ANIL from VRCE to C.G. ROAD. (Use Borrow Table) 
-update borrow set bname='c.g.road' where cname='anil'
+UPDATE borrow SET bname='c.g.road' WHERE cname='anil'
 
---3. Update Account No of SANDIP to 111 & Amount to 5000. (Use Deposit Table)
-update deposit set actno=111 , amount=5000.00 where cname='sandip'
+--3. UPDATE Account No of SANDIP to 111 & Amount to 5000. (Use Deposit Table)
+UPDATE deposit SET actno=111 , amount=5000.00 WHERE cname='sandip'
 
---4. Update amount of KRANTI to 7000. (Use Deposit Table)
-update deposit set amount=7000 where cname='kranti'
+--4. UPDATE amount of KRANTI to 7000. (Use Deposit Table)
+UPDATE deposit SET amount=7000 WHERE cname='kranti'
 
---5. Update branch name from ANDHERI to ANDHERI WEST. (Use Branch Table)
-update branch set bname='andheri west' where bname='andheri'
+--5. UPDATE branch name from ANDHERI to ANDHERI WEST. (Use Branch Table)
+UPDATE branch SET bname='andheri west' WHERE bname='andheri'
 
---6. Update branch name of MEHUL to NEHRU PALACE. (Use Deposit Table)
-update deposit set bname='nehru palace' where cname='mehul'
+--6. UPDATE branch name of MEHUL to NEHRU PALACE. (Use Deposit Table)
+UPDATE deposit SET bname='nehru palace' WHERE cname='mehul'
 
---7. Update deposit amount of all depositors to 5000 whose account no between 103 & 107. (Use Deposit Table)
-update deposit set amount = 5000.00 where actno between 103 and 107
+--7. UPDATE deposit amount of all depositors to 5000 whose account no between 103 & 107. (Use Deposit Table)
+UPDATE deposit SET amount = 5000.00 WHERE actno between 103 and 107
 
---8. Update ADATE of ANIL to 1-4-95. (Use Deposit Table)
-update deposit set adate='1995-04-01' where cname='anil';
+--8. UPDATE ADATE of ANIL to 1-4-95. (Use Deposit Table)
+UPDATE deposit SET adate='1995-04-01' WHERE cname='anil';
 
---9. Update the amount of MINU to 10000. (Use Deposit Table)
-update deposit set amount=10000.00 where cname='minu';
+--9. UPDATE the amount of MINU to 10000. (Use Deposit Table)
+UPDATE deposit SET amount=10000.00 WHERE cname='minu';
 
---10. Update deposit amount of PRAMOD to 5000 and ADATE to 1-4-96 (Use Deposit Table)
-update deposit set amount=5000.00 , adate='1996-04-01' where cname='pramod'
+--10. UPDATE deposit amount of PRAMOD to 5000 and ADATE to 1-4-96 (Use Deposit Table)
+UPDATE deposit SET amount=5000.00 , adate='1996-04-01' WHERE cname='pramod'
 
 --Part => B
 
 --1. Give 10% Increment in Loan Amount. (Use Borrow Table)
-update borrow set amount=(amount+(amount*10/100))
+UPDATE borrow SET amount=(amount+(amount*10/100))
 
---2. Customer deposits additional 20% amount to their account, update the same. (Use Deposit Table)
-update deposit set amount=(amount+(amount*20/100))
+--2. Customer deposits additional 20% amount to their account, UPDATE the same. (Use Deposit Table)
+UPDATE deposit SET amount=(amount+(amount*20/100))
 
 --3. Increase Amount by 1000 in all the account. (Use Deposit Table)
-update deposit set amount=(amount+1000) 
+UPDATE deposit SET amount=(amount+1000) 
 
---4. Update the BORROW table to set the amount to 7000 and the branch name to 'CENTRAL' where the customer
+--4. UPDATE the BORROW table to SET the amount to 7000 and the branch name to 'CENTRAL' WHERE the customer
 --name is �MEHUL� and the loan number is even.
-update borrow set amount=7000 , bname='central' where cname='mehul' and (loanno%2 = 0)
+UPDATE borrow SET amount=7000 , bname='central' WHERE cname='mehul' and (loanno%2 = 0)
 
---5. Update the DEPOSIT table to set the date to '2022-05-15' and the amount to 2500 for all accounts in �VRCE�
+--5. UPDATE the DEPOSIT table to SET the date to '2022-05-15' and the amount to 2500 for all accounts in �VRCE�
 --and with an account number less than 105.
-update deposit set adate='2022-05-15' , amount=2500.00 where actno < 105 and bname='vrce'
+UPDATE deposit SET adate='2022-05-15' , amount=2500.00 WHERE actno < 105 and bname='vrce'
