@@ -86,10 +86,10 @@ ALTER TABLE deposit ADD city varchar(20) , pincode int;
 ALTER TABLE deposit ADD state varchar(20);
 
 --3. Change the size of CNAME COLUMN from VARCHAR (50) to VARCHAR (35).
-ALTER TABLE deposit ALTER COLUMN cname varchar(35);
+ALTER TABLE deposit MODIFY COLUMN cname varchar(35);
 
 --4. Change the data type DECIMAL to INT in amount COLUMN.
-ALTER TABLE deposit ALTER COLUMN amount int;
+ALTER TABLE deposit MODIFY COLUMN amount int;
 
 --5. Delete COLUMN City from the DEPOSIT TABLE.
 ALTER TABLE deposit drop COLUMN city;
@@ -100,3 +100,123 @@ ALTER TABLE deposit RENAME COLUMN ACTNO TO ANO;
 --7. Change name of TABLE DEPOSIT to DEPOSIT_DETAIL
 RENAME TABLE DEPOSIT TO DEPOSIT_DETAIL;
 
+
+--Part => B
+
+--1.Rename Column ADATE to AOPENDATE OF DEPOSIT_DETAIL table.
+ALTER TABLE deposit_detail CHANGE COLUMN ADATE AOPENDATE DATETIME;
+
+--2. Delete Column AOPENDATE from the DEPOSIT_DETAIL table.
+ALTER TABLE deposit_detail DROP COLUMN AOPENDATE;
+
+--3. Rename Column CNAME to CustomerName.
+ALTER TABLE deposit_detail CHANGE COLUMN CNAME CUSTOMERNAME VARCHAR(25);
+
+--4. Add Column country.
+ALTER TABLE deposit_detail ADD COLUMN COUNTRY VARCHAR(25);
+
+
+--Part => C
+
+--CREATE TABLE
+CREATE TABLE student_detail(
+ enrollment_No varchar(20),
+ name varchar(25),
+ cpi decimal(5,2),
+ birthdate datetime
+)
+
+--1. Add two more columns City VARCHAR (20) (Not null) and Backlog INT (Null).
+ALTER TABLE student_detail ADD COLUMN CITY VARCHAR (20) NOT NULL, ADD COLUMN Backlog INT null;
+
+--2.Add column department VARCHAR (20) Not Null.
+ALTER TABLE student_detail ADD COLUMN department VARCHAR (20) NOT NULL;
+
+--3. Change the size of NAME column of student_detail from VARCHAR (25) to VARCHAR (35).
+ALTER TABLE student_detail MODIFY COLUMN name VARCHAR(35);
+
+--4. Change the data type DECIMAL to INT in CPI Column.
+ALTER TABLE student_detail MODIFY COLUMN cpi int;
+
+--5.Delete Column City from the student_detail table.
+ALTER TABLE student_detail DROP COLUMN CITY;
+
+--6. Rename Column Enrollment_No to ENO.
+ALTER TABLE student_detail CHANGE COLUMN Enrollment_No ENO VARCHAR (20);
+
+--7. Change name of table student_detail to STUDENT_MASTER.
+RENAME TABLE student_detail TO STUDENT_MASTER;
+
+
+--DELETE, Truncate, Drop Operation
+--Part => A (Use Deposit_Detail table)
+
+--1. Delete all the records of DEPOSIT_DETAIL table having amount less than and equals to 4000. 
+DELETE FROM deposit_detail WHERE AMOUNT<=4000;
+
+--2. Delete all the accounts CHANDI BRANCH.
+DELETE FROM deposit_detail WHERE BNAME='CHANDI';
+
+--3. Delete all the accounts having account number (ANO) is greater than 102 and less than 105.
+delete from deposit_detail where ano >102 and ano < 105
+
+--4. Delete all the accounts whose branch is ‘AJNI’ or ‘POWAI’
+delete from deposit_detail where BNAME='AJNI' OR BNAME='POWAI';
+
+--5. Delete all the accounts whose account number is NULL
+DELETE FROM deposit_detail WHERE ANO=NULL;
+
+--6. Delete all the remaining records using Delete command.
+delete from deposit_detail;
+
+--7. Delete all the records of Deposit_Detail table. (Use Truncate)
+truncate table deposit_detail;
+
+--8. Remove Deposit_Detail table. (Use Drop)
+drop table deposit_detail;
+
+
+--Part => B
+create table employee_master
+(
+ empno int,
+ empname varchar(25),
+ joinngdate datetime,
+ salary decimal(8,2),
+ city varchar(20)
+)
+
+insert into employee_master values
+(101,'keyur','2002-01-05',12000.00,'rajkot'),
+(102,'hardik','2004-02-15',14000.00,'ahmedabad'),
+(103,'kajal','2006-03-14',15000.00,'baroda'),
+(104,'bhoomi','2005-06-23',12500.00,'ahmedabad'),
+(105,'harmit','2004-02-15',14000.00,'rajkot'),
+(106,'mitesh','2001-09-25',5000.00,'jamnagar'),
+(107,'meera',null,7000.00,'morbi'),
+(108,'krishn','2003-02-06',10000.00,null)
+
+--1. Delete all the records of Employee_MASTER table having salary greater than and equals to 14000. 
+delete employee_master where salary >= 14000
+
+--2. Delete all the Employees who belongs to �RAJKOT� city.
+delete employee_master where city='rajkot'
+
+--3. Delete all the Employees who joined after 1-1-2007.
+delete employee_master where joinngdate>'2007-01-01'
+
+--4. Delete the records of Employees whose joining date is null and Name is not null.
+delete employee_master where joinngdate is null and empname is not null
+
+--5. Delete the records of Employees whose salary is 50% of 20000.
+delete employee_master where salary=((20000*50)/100)
+delete employee_master where salary= 20000 * 0.5
+
+--6. Delete the records of Employees whose City Name is not empty.
+delete employee_master where city is not null
+
+--7. Delete all the records of Employee_MASTER table. (Use Truncate)
+truncate table employee_master
+
+--8. Remove Employee_MASTER table. (Use Drop)
+drop table employee_master
